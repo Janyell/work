@@ -1,0 +1,144 @@
+body {
+	font: 300 14px/23px segoe UI;
+	color: #5f6d8a;
+}
+.wrapper, .footer-content{
+	width: 980px;
+	display: block;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+}
+
+a {
+	text-decoration: none;
+	color: #5f6d8a;
+}
+
+.footer-menu {
+	background-color: #f4f4f4;
+	padding-bottom: 26px;
+}
+
+.footer-menu__column {
+    width: 240px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.footer-menu__first-column {
+	margin-left: 20px;
+}
+
+.footer-menu__header {
+	color: #232424;
+	font-weight: 600;
+}
+
+.footer-menu__deals, .footer-menu__clients {
+	margin-bottom: 10px;
+}
+
+.letter-form__message {
+	resize: none;
+}
+
+.footer-menu__hr {
+	margin-bottom: 29px;
+}
+
+input, select, textarea {
+	font: 13px/23px segoe UI;
+}
+
+.letter-form__email {
+	width: 207px;
+	height: 27px;
+	padding-left: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.letter-form__whom {
+	width: 220px;
+	height: 30px;
+	padding-left: 8px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.letter-form__message {
+	width: 207px;
+	height: 100px;
+	padding-left: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+input::-moz-placeholder {
+	color: #a9a9a9
+}
+
+input::-webkit-input-placeholder {
+	color: #a9a9a9
+}
+
+textarea::-moz-placeholder {
+	color: #a9a9a9
+}
+
+textarea::-webkit-textarea-placeholder {
+	color: #a9a9a9
+}
+
+.letter-form__submit {
+	border: medium none;
+	height: 27px;
+	background-color: #e2562f;
+	font-weight: 600;
+	color: #FFF;
+	cursor: pointer;
+	width: 217px;
+	box-shadow:
+	1px 0.1px #ffa48b, 1px 1px #ae301b,
+	2px 1px #ffa48b, 2px 2px #ae301b,
+	3px 2px #ffa48b, 3px 3px #ae301b;
+}
+
+
+.footer-inform {
+	height: 70px;
+	position: relative;
+}
+
+.footer-inform__copyright {
+	position: absolute;
+	left: 20px;
+	top: 23px;
+	font-size: 13px;
+	color: #b2b2b2;
+}
+
+.footer-inform__counter {
+	position: absolute;
+	left: 192px;
+	top: 23px;
+}
+
+.footer-inform__social-networks {
+	position: absolute;
+	left: 740px; 
+	top: 21px;
+}
+
+.footer-social-networks__facebook {
+	margin-right: 19px; 
+}
+
+.footer-social-networks__vk {
+	margin-right: 12px; 
+}
+
+.footer-social-networks__twitter {
+	margin-right: 13px;
+}
