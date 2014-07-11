@@ -3,7 +3,7 @@
     	<div class="footer-content">
     		<div class="footer-menu">
     			<hr class="footer-menu__hr"color="#c5c8d0" size="3px" />
-	            <div class="footer-menu__column footer-menu__first-column">
+	            <div class="footer-menu__column footer-menu__column_first">
             		<div class="footer-menu__production">
 	            		<a class="footer-menu__header" href="production/">Продукция</a>
 		                <br />
@@ -49,7 +49,6 @@
 					</div>
 					<div class="footer-menu__clients">
 						<a class="footer-menu__header" href="clients/">Клиенты</a>
-						<br />
 					</div>
 					<div class="footer-menu__feedback">
 						<font class="footer-menu__header">Обратная связь</font>
