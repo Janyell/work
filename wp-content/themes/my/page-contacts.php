@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<section class="content">
+<section class="content content_contacts">
 	<img class="contacts" src="http://localhost:8000/wordpress/wp-content/uploads/2014/07/contacts.png" alt="Контакты" />
 	<?php get_modal_window(
 		$phone_code = "351", 

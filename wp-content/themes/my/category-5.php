@@ -1,10 +1,10 @@
 <?php get_header(); ?>
-<section>
-	<div class="post__title post__title_padding_xl">Наши клиенты - мировые лидеры</div>
+<section class="content">
+	<h1 class="post__title post__title_padding_xl">Наши клиенты - мировые лидеры</h1>
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?><!--
 		--><div class="post">
 			<div class="post__header">
-	<?php 
+	<?php
 		$logo = get_first_image();
 		if (!empty($logo)) { ?>
 				<a href="<?php the_permalink() ?>" title="Ссылка на: <?php the_title_attribute(); ?>"><img class="post__logo" src="<?php echo $logo; ?>" alt="<?php the_title_attribute(); ?>"/></a>
@@ -21,4 +21,4 @@
 		--><?php
 	endwhile; endif; ?>
 </section>
-<?php get_footer(); ?> 
+<?php get_footer(); ?>

@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<section class="content">
+<section class="content content_representation">
 	<div class="representation">
 		<img class="representation__chelyabinsk" src="<?php bloginfo('template_url'); ?>/images/representation_icon.png" alt="Челябинск" />
 		<img class="representation__moscow" src="<?php bloginfo('template_url'); ?>/images/representation_icon.png" alt="Москва" />
@@ -8,66 +8,66 @@
 		<img class="representation__ekaterinburg" src="<?php bloginfo('template_url'); ?>/images/representation_icon.png" alt="Екатеринбург" />
 		<img class="representation__omsk" src="<?php bloginfo('template_url'); ?>/images/representation_icon.png" alt="Омск" />
 	</div>
-	<?php 
+	<?php
 	get_modal_window(
-		$phone_code = "351", 
-		$phones = "729-99-47,  729-99-48,  247-63-64,  777-20-72", 
-		$email = "opt@zavodtriumf.ru", 
+		$phone_code = "351",
+		$phones = "729-99-47,  729-99-48,  247-63-64,  777-20-72",
+		$email = "opt@zavodtriumf.ru",
 		$address = "ООО «Завод Триумф», г. Челябинск, ул. Автодорожная, д. 3",
 		$id = "chelyabinsk",
 		$is_closed = "false",
 		$is_visible = "false",
-		$position = 'absolute' 
-	); 
+		$position = 'absolute'
+	);
 	get_modal_window(
-		$phone_code = "", 
-		$phones = "", 
-		$email = "", 
+		$phone_code = "",
+		$phones = "",
+		$email = "",
 		$address = "ООО «Завод Триумф», г. Москва",
 		$id = "moscow",
 		$is_closed = "false",
 		$is_visible = "false",
-		$position = 'absolute'  
+		$position = 'absolute'
 	);
 	get_modal_window(
-		$phone_code = "", 
-		$phones = "", 
-		$email = "", 
+		$phone_code = "",
+		$phones = "",
+		$email = "",
 		$address = "ООО «Завод Триумф», г. Нижний Новгород",
 		$id = "nizhny-novgorod",
 		$is_closed = "false",
 		$is_visible = "false",
-		$position = 'absolute'  
+		$position = 'absolute'
 	);
 	get_modal_window(
-		$phone_code = "", 
-		$phones = "", 
-		$email = "", 
+		$phone_code = "",
+		$phones = "",
+		$email = "",
 		$address = "ООО «Завод Триумф», г. Самара",
 		$id = "samara",
 		$is_closed = "false",
 		$is_visible = "false",
-		$position = 'absolute'  
+		$position = 'absolute'
 	);
 	get_modal_window(
-		$phone_code = "", 
-		$phones = "", 
-		$email = "", 
+		$phone_code = "",
+		$phones = "",
+		$email = "",
 		$address = "ООО «Завод Триумф», г. Екатеринбург",
 		$id = "ekaterinburg",
 		$is_closed = "false",
 		$is_visible = "false",
-		$position = 'absolute'  
+		$position = 'absolute'
 	);
 	get_modal_window(
-		$phone_code = "", 
-		$phones = "", 
-		$email = "", 
+		$phone_code = "",
+		$phones = "",
+		$email = "",
 		$address = "ООО «Завод Триумф», г. Омск",
 		$id = "omsk",
 		$is_closed = "false",
 		$is_visible = "false",
-		$position = 'absolute'  
+		$position = 'absolute'
 	);
 	?>
 </section>
@@ -77,7 +77,7 @@
 		$('.representation').bind('click', function(){
 			if (curModalWindow != '')
 				$('#' + curModalWindow).css({'display':'none'});
-		});	
+		});
 	 	$('.representation__chelyabinsk').bind('click', function(event){
 	 		if (curModalWindow != '')
 				$('#' + curModalWindow).css({'display':'none'});

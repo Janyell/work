@@ -3,7 +3,6 @@
     <div class="left_column">
         <h1 class="content__title"><?php printf( __( 'Поиск по: %s', 'shape' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
         <hr class="divider orange">
-        <img src="<?php bloginfo('template_directory'); ?>/i/next_orange.png" alt="">
     </div>
     <!-- Правая колонка для вывода контента -->
     <div class="right_column">

@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php
+/*
+Template Name: My Custom Page
+*/
+get_header(); ?>
 <section class="main-menu">
 	<img class="main-img" src="<?php bloginfo('template_url'); ?>/images/main-img.png" alt="Главная" />
 	<a class="main-menu__installation" href="#installation">
@@ -16,7 +20,7 @@
 	<a class="main-menu__repair" href="#repair">
 		<img class="lower-corner-img" src="<?php bloginfo('template_url'); ?>/images/lower-corner.png" />
 		Ремонт
-	</a>	
+	</a>
 </section>
 <section class="main-content">
 	<?php if (have_posts()): while (have_posts()): the_post(); ?>
@@ -25,10 +29,10 @@
 </section>
 <section class="main-last-news">
 	<?php $posts = get_posts ("category=3&orderby=date&numberposts=1"); /* news */
-	if ($posts) : 
+	if ($posts) :
 	foreach ($posts as $post) : setup_postdata ($post); ?>
 		<div class="last-post_news">
-		<?php 
+		<?php
 			$first_img = get_first_image();
 			if (!empty($first_img)) { ?>
 				<div class="post__content last-post__content">
@@ -52,21 +56,23 @@
 			</div>
 	<?php endforeach; endif; ?>
 	<a class="more-news"href="<?php echo get_category_link(3); ?>">
-		больше новостей 
+		больше новостей
 		<img class="more-img" src="<?php bloginfo('template_url'); ?>/images/more.png" />
 	</a>
 </section>
 <section class="main-last-production">
 	<?php $posts = get_posts ("category=4&orderby=date&numberposts=1");
-	if ($posts) : 
+	if ($posts) :
 	foreach ($posts as $post) : setup_postdata ($post); ?>
+<a class="order" href="<?php the_permalink() ?>" title="Ссылка на: <?php the_title_attribute(); ?>">
 		<div class="last-post_production">
-		<?php 
+
+		<?php
 			$first_img = get_first_image();
 			if (!empty($first_img)) { ?>
 				<div class="last-post_production__img">
 					<img class="last-post_production__first-img" src="<?php echo $first_img; ?>" alt="" />
-				</div>	
+				</div>
 			<?php } ?>
 				<div class="last-post_production__content">
 					<h1 class="last-post_production__category-title">
@@ -74,12 +80,10 @@
 						echo $category[0]->cat_name; ?>
 					</h1>
 					<p class="post_production__title last-post_production__title"><?php the_title(); ?></p>
-					<a class="order" href="<?php the_permalink() ?>" title="Ссылка на: <?php the_title_attribute(); ?>">
-						заказать
+						<span class="order-button">заказать</span>
 						<img class="more-img" src="<?php bloginfo('template_url'); ?>/images/more.png" />
-					</a>
 				</div>
-			</div><!--
+			</div></a><!--
 			--><?php
 		endforeach; endif; ?>
 </section>

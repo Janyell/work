@@ -65,11 +65,11 @@
 							<select class="letter-form__whom" size="1" name="whom">
 								<option value="director" selected>Директору</option>
 								<option value="add">Добавить</option>
-							</select> 
+							</select>
 							<input class="letter-form__email" type="email" placeholder="Ваш E-mail" required />
 							<textarea class="letter-form__message" name="message" placeholder="Ваше сообщение" required maxlength="1000"></textarea>
 							<input class="letter-form__submit" type="submit" value="Отправить" />
-						</form>	
+						</form>
 					</div>
 				</div>
 	        </div>
@@ -106,15 +106,16 @@
 						<img src="<?php bloginfo('template_url'); ?>/images/youtube.png" alt="youtube.com" />
 					</a>
 				</div>
-	        </div>	
-    	</div>	
+	        </div>
+    	</div>
+    	<?php wp_footer(); ?>
     </footer>
     <script type="text/javascript">
         (function($){
         	var phone = $('#phone');
             $('.phone__a-modal').bind('click', function(){
             	if (phone.css("display") == 'none')
-                	phone.css({'display':'block'}); 
+                	phone.css({'display':'block'});
             });
             $('.modal__a-close').bind('click', function(){
                 phone.css({'display':'none'});
@@ -124,14 +125,14 @@
             	e.preventDefault();
 		        var link = $(this).attr('href');
 				if ($('.current').contents().text() < $(this).contents().text()) {
-	  				$('.posts').stop().animate({left : -980}, 300, function() {		
+	  				$('.posts').stop().animate({left : -980}, 300, function() {
 			        	content.load(link+' .content', function() {
 			        		$('.posts').stop().css({'left' : '980px'}).animate({left : 0}, 300);
 			        	});
 			    	});
 			    }
   				else {
-  					$('.posts').stop().animate({left: 980}, 300, function() {		
+  					$('.posts').stop().animate({left: 980}, 300, function() {
 			        	content.load(link+' .content', function() {
 			        		$('.posts').stop().css({'left' : '-980px'}).animate({left : 0}, 300);
 			        	});
@@ -140,5 +141,6 @@
 	    	});
         })(jQuery);
     </script>
+</div>
 </body>
 </html>
