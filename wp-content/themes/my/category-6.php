@@ -46,8 +46,7 @@
 	</table>
 	<div class="question-form">
 		<div class="question-form__header">Задать вопрос</div>
-		<!--?php echo do_shortcode('[contact-form-7 id="157" title="Контактная форма 1"]'); ?-->
-		<?php echo do_shortcode('[si-contact-form form="1"]'); ?>
+		<?php echo do_shortcode('[contact-form-7 id="157" title="Контактная форма 1"]'); ?>
 	</div>
 </section>
 <script type="text/javascript">

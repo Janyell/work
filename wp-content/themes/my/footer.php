@@ -2,71 +2,17 @@
     <footer>
     	<div class="footer-content">
     		<div class="footer-menu">
-    			<?php
-                $representation_url = get_home_url().'/representation';
-                $photos_url = get_home_url().'/photos';
-                $contacts_url = get_home_url().'/contacts';
-                ?>
     			<div class="footer-menu__hr"></div>
-	            <div class="footer-menu__column footer-menu__column_first">
-            		<div class="footer-menu__production">
-	            		<a class="footer-menu__header" href="<?php echo get_category_link(4); ?>">Продукция</a>
-		                <br />
-		                <a href="<?php echo get_category_link(9); ?>">Водоводяные подогреватели</a>
-		                <br />
-		                <a href="<?php echo get_category_link(10); ?>">Пароводяные подогреватели</a>
-		                <br />
-		                <a href="<?php echo get_category_link(11); ?>">Трубные системы</a>
-		                <br />
-		                <a href="<?php echo get_category_link(12); ?>">Емкостное оборудование</a>
-		                <br />
-		                <a href="<?php echo get_category_link(13); ?>">Пластинчатые теплообменники</a>
-		                <br />
-		                <a href="<?php echo get_category_link(14); ?>">Конвекторы</a>
-		                <br />
-		                <a href="<?php echo get_category_link(15); ?>">Регистры отопительные</a>
-		                <br />
-		                <a href="<?php echo get_category_link(16); ?>">Грязевик</a>
-		                <br />
-		                <a href="<?php echo get_category_link(17); ?>">Воздухосборники А1И</a>
-		                <br />
-		                <a href="<?php echo get_category_link(18); ?>">Элеваторы</a>
-		            </div>
-            	</div><!--
-            	--><div class="footer-menu__column">
-            		<div class="footer-menu__plant">
-            			<font class="footer-menu__header">Завод</font>
-	            		<br />
-						<a href="<?php echo get_category_link(3); ?>">Новости</a>
-						<br />
-						<a  href="<?php echo $photos_url ?>">Фотогалерея</a>
-						<br />
-						<a href="<?php echo get_category_link(8); ?>">Документация</a>
-					</div>
-				</div><!--
-				--><div class="footer-menu__column">
-					<div class="footer-menu__clients">
-						<a class="footer-menu__header" href="<?php echo get_category_link(5); ?>">Клиенты</a>
-					</div>
-					<div class="footer-menu__feedback">
-						<font class="footer-menu__header">Обратная связь</font>
-						<br />
-						<a href="<?php echo $contacts_url; ?>">Контакты</a>
-						<br />
-						<a href="<?php echo $representation_url; ?>">Представительства</a>
-						<br />
-						<a href="<?php echo get_category_link(6); ?>">Вопросы и ответы</a>
-					</div>
-				</div><!--
+				<?php wp_nav_menu('menu=footer-menu'); ?><!--
 				--><div class="footer-menu__column">
 					<div class="footer-menu__letter">
 						<font class="footer-menu__header">Написать письмо</font>
-						<form class="letter-form" method="POST" action="/">
+						<form class="letter-form" method="POST" action="">
 							<select class="letter-form__whom" size="1" name="whom">
 								<option value="director" selected>Директору</option>
-								<option value="add">Добавить</option>
+								<option value="manager">Менеджеру</option>
 							</select>
-							<input class="letter-form__email" type="email" placeholder="Ваш E-mail" required />
+							<input class="letter-form__email" name="email" type="email" placeholder="Ваш E-mail" required />
 							<textarea class="letter-form__message" name="message" placeholder="Ваше сообщение" required maxlength="1000"></textarea>
 							<input class="letter-form__submit" type="submit" value="Отправить" />
 						</form>
@@ -110,6 +56,34 @@
     	</div>
     	<?php wp_footer(); ?>
     </footer>
+	<?php 
+		$mails = array(
+		'director' => 'test1@mail.ru', 
+		'manager' => 'test2@mail.ru',
+		);
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		$whom = $_POST['whom'];
+		$email = $_POST['email'];
+		$message = $_POST['message'];
+		$to = $mails[$whom];
+		$subject = 'Завод "Триумф": новое сообщение от '.$email;
+		if (wp_mail( $to, $subject, $message)) {
+			$msg_status = "Ваше сообщение успешно отправлено!";
+		} 
+		else {
+			$msg_status = "Ваше сообщение не отправлено!";
+		} ?>
+		<div id="letter-form-status" class="modal modal_display_block modal_xs">
+			<div class="modal__align-helper">
+		        <div class="modal__message">
+		            <?php echo $msg_status; ?>
+		        </div>
+		    </div>
+		    <a class="modal__a-close">
+		      <img class="modal__close" src="<?php bloginfo('template_url'); ?>/images/close.png" />
+		   </a>
+		</div>
+	<?php } ?>
     <script type="text/javascript">
         (function($){
         	var phone = $('#phone');
@@ -117,9 +91,12 @@
             	if (phone.css("display") == 'none')
                 	phone.css({'display':'block'});
             });
-            $('.modal__a-close').bind('click', function(){
+            $('#phone .modal__a-close').bind('click', function(){
                 phone.css({'display':'none'});
             });
+            $('#letter-form-status .modal__a-close').bind('click', function(){
+            	$('#letter-form-status').css({'display':'none'});
+        	});
             var content = $('.content');
             content.on('click', '.wp-pagenavi a', function(e){
             	e.preventDefault();
@@ -139,6 +116,29 @@
 			    	})
   				};
 	    	});
+	    	$('#menu-header-menu > #menu-item-234 > a').bind('click', function(e) {
+	    		e.preventDefault();
+	    	});
+	    	$('#menu-header-menu > #menu-item-238 > a').bind('click', function(e) {
+	    		e.preventDefault();
+	    	});
+	    	$('#menu-footer-menu > #menu-item-254 > a').bind('click', function(e) {
+	    		e.preventDefault();
+	    	});
+	    	$('#menu-footer-menu > #menu-item-258 > a').bind('click', function(e) {
+	    		e.preventDefault();
+	    	});
+	    	$(document).ready(function() {
+				if ($('#menu-header-menu > #menu-item-234 > .sub-menu > .menu-item.active').size()) {
+					$('#menu-header-menu > #menu-item-234').addClass('active');
+					$('#menu-header-menu > #menu-item-234 > .sub-menu').css({'display' : 'block'});
+				}
+				if ($('#menu-header-menu > #menu-item-238 > .sub-menu > .menu-item.active').size()) {
+					$('#menu-header-menu > #menu-item-238').addClass('active');
+					$('#menu-header-menu > #menu-item-238 > .sub-menu').css({'display' : 'block'});
+					$('#menu-header-menu > #menu-item-234 > .sub-menu').css({'z-index' : '1'});
+				}
+			});
         })(jQuery);
     </script>
 </div>

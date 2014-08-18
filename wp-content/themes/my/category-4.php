@@ -38,38 +38,7 @@
     <div class="catalog">
         <?php $cat_ID = get_query_var('cat'); ?>
         <div class="catalog__title">Каталог</div>
-        <ul>
-            <li>
-                <a class="catalog__item <?php if ($cat_ID == 9) echo "catalog__item_active"; ?>" href="<?php echo get_category_link(9); ?>">Водоводяные подогреватели</a>
-            </li>
-            <li>
-                <a class="catalog__item <?php if ($cat_ID == 10) echo "catalog__item_active"; ?>" href="<?php echo get_category_link(10); ?>">Пароводяные подогреватели</a>
-            </li>
-            <li>
-                <a class="catalog__item <?php if ($cat_ID == 11) echo "catalog__item_active"; ?>" href="<?php echo get_category_link(11); ?>">Трубные системы</a>
-            </li>
-            <li>
-                <a class="catalog__item <?php if ($cat_ID == 12) echo "catalog__item_active"; ?>" href="<?php echo get_category_link(12); ?>">Емкостное оборудование</a>
-            </li>
-            <li>
-                <a class="catalog__item <?php if ($cat_ID == 13) echo "catalog__item_active"; ?>" href="<?php echo get_category_link(13); ?>">Пластинчатые теплообменники</a>
-            </li>
-            <li>
-                <a class="catalog__item <?php if ($cat_ID == 14) echo "catalog__item_active"; ?>" href="<?php echo get_category_link(14); ?>">Конвекторы</a>
-            </li>
-            <li>
-                <a class="catalog__item <?php if ($cat_ID == 15) echo "catalog__item_active"; ?>" href="<?php echo get_category_link(15); ?>">Регистры отопительные</a>
-            </li>
-            <li>
-                <a class="catalog__item <?php if ($cat_ID == 16) echo "catalog__item_active"; ?>" href="<?php echo get_category_link(16); ?>">Грязевик</a>
-            </li>
-            <li>
-                <a class="catalog__item <?php if ($cat_ID == 17) echo "catalog__item_active"; ?>" href="<?php echo get_category_link(17); ?>">Воздухосборники А1И</a>
-            </li>
-            <li>
-                <a class="catalog__item <?php if ($cat_ID == 18) echo "catalog__item_active"; ?>" href="<?php echo get_category_link(18); ?>">Элеваторы</a>
-            </li>
-        <ul>
+        <?php wp_nav_menu('menu=production-menu'); ?>
     </div>
 </section><!--
 --><section class="content content_production">
@@ -151,4 +120,13 @@
     </table>
     <?php } ?>
 </section>
+<script type="text/javascript">
+    (function($){
+        $(document).ready(function() {
+            if ($('#menu-production-menu > .active').size()) {
+                $('#menu-header-menu #menu-item-240').addClass('active');
+            }
+        });
+    })(jQuery);
+</script>
 <?php get_footer(); ?>

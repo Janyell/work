@@ -1,8 +1,4 @@
-<?php
-/*
-Template Name: My Custom Page
-*/
-get_header(); ?>
+<?php get_header(); ?>
 <section class="main-menu">
 	<img class="main-img" src="<?php bloginfo('template_url'); ?>/images/main-img.png" alt="Главная" />
 	<a class="main-menu__installation" href="#installation">
@@ -64,7 +60,7 @@ get_header(); ?>
 	<?php $posts = get_posts ("category=4&orderby=date&numberposts=1");
 	if ($posts) :
 	foreach ($posts as $post) : setup_postdata ($post); ?>
-<a class="order" href="<?php the_permalink() ?>" title="Ссылка на: <?php the_title_attribute(); ?>">
+		<a class="order" href="<?php the_permalink() ?>" title="Ссылка на: <?php the_title_attribute(); ?>">
 		<div class="last-post_production">
 
 		<?php
@@ -85,7 +81,7 @@ get_header(); ?>
 				</div>
 			</div></a><!--
 			--><?php
-		endforeach; endif; ?>
+	endforeach; endif; ?>
 </section>
 <script type="text/javascript">
 	(function($){

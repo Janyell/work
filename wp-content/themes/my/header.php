@@ -42,49 +42,8 @@
                 </div>
             </div>
             <img class="header-inform-shadow" src="<?php bloginfo('template_url'); ?>/images/shadow.png" />
-            <ul class="header-menu">
-                <?php $cat_ID = get_query_var('cat');
-                $cur_url = get_url();
-                $representation_url = 'representation';
-                $photos_url = 'photos';
-                $contacts_url = '/contacts';
-                ?>
-                <li class="header-menu__production">
-                    <a class="header-menu__header header-menu__header_first <?php if ($cat_ID == 4 || $cat_ID >= 9 && $cat_ID <= 18) echo "header-item_active"; ?>" href="<?php echo get_category_link(4); ?>">Продукция</a>
-                </li>
-                <li class="header-menu__clients">
-                    <a class="header-menu__header <?php if ($cat_ID == 5) echo "header-item_active"; ?>" href="<?php echo get_category_link(5); ?>">Клиенты</a>
-                </li>
-                <li class="header-menu__plant">
-                    <div class="header-menu__header">Завод</div>
-                    <ul class="header-menu__submenu">
-                        <li>
-                            <a class="header-submenu__item header-submenu__item_first <?php if ($cat_ID == 3) echo "header-item_active"; ?>" href="<?php echo get_category_link(3); ?>">Новости</a>
-                        </li>
-                        <li>
-                            <a class="header-submenu__item  <?php if ($cur_url == $photos_url)  echo "header-item_active"; ?>" href="<?php echo get_home_url().'/'.$photos_url ?>">Фотогалерея</a>
-                        </li>
-                        <li>
-                            <a class="header-submenu__item header-submenu__item_last <?php if ($cat_ID == 8) echo "header-item_active"; ?>" href="<?php echo get_category_link(8); ?>">Документация</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="header-menu__feedback">
-                    <div class="header-menu__header">Обратная связь</div>
-                    <ul class="header-menu__submenu">
-                        <li>
-                            <a class="header-submenu__item header-submenu__item_first <?php if ($cat_ID == 6)  echo "header-item_active"; ?>" href="<?php echo get_category_link(6); ?>">Вопросы-ответы</a>
-                        </li>
-                        <li>
-                            <a class="header-submenu__item <?php if ($cur_url == $contacts_url)  echo "header-item_active"; ?>" href="<?php echo get_home_url().'/'.$contacts_url; ?>">Контакты</a>
-                        </li>
-                        <li>
-                            <a class="header-submenu__item header-submenu__item_last <?php if ($cur_url == $representation_url)  echo "header-item_active"; ?>" href="<?php echo get_home_url().'/'.$representation_url; ?>">Представительства</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <a href="/">
+            <?php wp_nav_menu('menu=header-menu'); ?>
+            <a href="<?php echo get_home_url(); ?>">
                 <img class="header-logo" src="<?php bloginfo('template_url'); ?>/images/logo.png" />
             </a>
         </div>
