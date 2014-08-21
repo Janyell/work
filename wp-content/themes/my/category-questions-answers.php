@@ -4,8 +4,8 @@
 	$posts = query_posts('cat='. $cat_ID . '&posts_per_page=-1'); ?>
 	<table class="posts_questions-answers">
 	    <tr class="first-tr">
-	        <td class="questions"><h1>Вопросы</h1></th>
-	        <td class="answers"><h1>Ответы</h1></th>
+	        <td class="questions"><h1><?php $cur_lang = get_cur_lang(); get_lang_switch($cur_lang, 'Вопросы', 'Questions', 'Fragen'); ?></h1></th>
+	        <td class="answers"><h1><?php get_lang_switch($cur_lang, 'Ответы', 'Answers', 'Antworten'); ?></h1></th>
 	    </tr>
 	    <?php $posts = query_posts('cat='. $cat_ID . '&posts_per_page=-1');
 	    if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
@@ -46,15 +46,22 @@
 	</table>
 	<div class="question-form">
 		<div class="question-form__header">Задать вопрос</div>
-		<?php echo do_shortcode('[contact-form-7 id="157" title="Контактная форма 1"]'); ?>
+		<?php if ($cur_lang == 'ru') {
+		    echo do_shortcode('[contact-form-7 id="157" title="Контактная форма 1"]');
+		} elseif ($cur_lang == 'en') {
+		    echo do_shortcode('[contact-form-7 id="85" title="Untitled"]');
+		}
+		else {
+	        echo do_shortcode('[contact-form-7 id="70" title="Ohne Titel"]');
+		} ?>
 	</div>
 </section>
 <script type="text/javascript">
 	(function($){
 		$(document).ready(function() {
-			$('.your-name > input').attr("placeholder", "Вас зовут");
-			$('.your-email > input').attr("placeholder", "Ваш E-mail");
-			$('.your-message > textarea').attr("placeholder", "Ваш вопрос");
+			$('.your-name > input').attr("placeholder", "<?php get_lang_switch($cur_lang, 'Вас зовут', 'Your name', 'Ihren Namen'); ?>");
+			$('.your-email > input').attr("placeholder", "<?php get_lang_switch($cur_lang, 'Ваш E-mail', 'Your E-mail', 'Ihre E-mail'); ?>");
+			$('.your-message > textarea').attr("placeholder", "<?php get_lang_switch($cur_lang, 'Ваш вопрос', 'Your question', 'Ihre Frage'); ?>");
 		});
 	})(jQuery);
 </script>

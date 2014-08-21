@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <section class="title">
     <h1 class="title_production">
-    Отличные товары
+        <?php echo category_description(); ?>
     </h1>
 </section>
 <section class="menu">    
@@ -47,12 +47,18 @@
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?><!--
         --><div class="post post_production">
             <?php
+            if (has_post_thumbnail()) { ?>
+                <div class="post_production__img">
+                    <?php the_post_thumbnail('production-thumb'); ?>
+                </div>
+            <?php } else {
                 $first_img = get_first_image();
-            if (!empty($first_img)) { ?>
-            <div class="post_production__img">
-                <img class="post_production__first-img" src="<?php echo $first_img; ?>" alt="" />
-            </div>
-            <?php } ?>
+                if (!empty($first_img)) { ?>
+                    <div class="post_production__img">
+                        <img class="post_production__first-img" src="<?php echo $first_img; ?>" alt="" />
+                    </div>
+                <?php } ?>
+            <?php } ?>  
             <div class="post_production__content">
                 <p class="post_production__title text-overflow"><?php the_title(); ?></p>
                 <a class="order" href="<?php the_permalink() ?>" title="Ссылка на: <?php the_title_attribute(); ?>">
@@ -124,7 +130,7 @@
     (function($){
         $(document).ready(function() {
             if ($('#menu-production-menu > .active').size()) {
-                $('#menu-header-menu #menu-item-240').addClass('active');
+                $('#menu-header-menu > .menu-item:first-child').addClass('active');
             }
         });
     })(jQuery);

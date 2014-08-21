@@ -1,20 +1,70 @@
 <?php get_header(); ?>
 <section class="content content_photos">
-	<?php if (have_posts()): while (have_posts()): the_post(); ?>
-        <?php the_content(); ?>
-    <?php endwhile; endif; ?>
+	<?php 
+	switch_to_blog(1);
+	if (have_posts()): while (have_posts()): the_post();
+        the_content();
+    endwhile; endif; 
+    restore_current_blog();
+    ?>
 </section>
 <script type="text/javascript">
 	(function($){
-		$(document).ready(function() {
-			$('.rg-gallery').css({'display' : 'none'});
-			var images_on_page = 2,
+		var content = $('.content');
+		$(window).load(function() {
+			var images_on_page = 18,
 				count_of_images = $('.gallery-item').size(),
 				count_of_images_on_last_page = count_of_images % images_on_page; 
 			if ((count_of_images < images_on_page) && (count_of_images_on_last_page % 4 == 0 || count_of_images % 18 % 4 == 3)) {
-				$('.content').append('<div class="post_empty post_empty_xxs"></div>');
+				content.append('<div class="post_empty post_empty_xxs"></div>');
 			}
+			$(".gallery-item").wrapAll('<div class="images"></div>');
+			$('#peg-1').off( "click");
+			var images = $('.images');
+	       	content.on('click', '.pagination > span', function(){
+	       		var to_page = $(this).contents().text(),
+	       			from_page = $('.current-page').contents().text();
+	       		if (from_page == to_page)
+	       			return;
+				if (from_page < to_page) {
+					$('.current-page').removeClass('current-page');
+	  				$(this).addClass('current-page');
+	  				images.animate({left : -980}, 300, function() {
+	  					i = 1;
+	  					var gallery_items = $('.gallery-item'); 
+	  					gallery_items.each(function() {
+							if (i <= from_page * images_on_page && i > (from_page - 1) * images_on_page) {
+								$(this).css({'display' : 'none'});
+							} 
+							else if (i <= to_page * images_on_page && i > (to_page - 1) * images_on_page) {
+								$(this).css({'display' : 'block'});
+								console.log(i);
+							}
+	  						++i;
+	  					});
+			        	images.stop().css({'left' : '980px'}).animate({left : 0}, 300);
+			    	});
+			    } else {
+			    	$('.current-page').removeClass('current-page');
+	  				$(this).addClass('current-page');
+			    	images.animate({left: 980}, 300, function() {
+	  					i = 1;
+	  					var gallery_items = $('.gallery-item'); 
+	  					gallery_items.each(function() {
+							if (i <= to_page * images_on_page && i > (to_page - 1) * images_on_page) {
+								$(this).css({'display' : 'block'});
+							}
+							else if (i <= from_page * images_on_page && i > (from_page - 1) * images_on_page) {
+								$(this).css({'display' : 'none'});
+							} 
+	  						++i;
+	  					});
+			        	images.stop().css({'left' : '-980px'}).animate({left : 0}, 300);
+			    	});
+			    }
+			});
 		});
+
 		$('.gallery-item a').bind('click', function(e) {
 			e.preventDefault();
 			var src = $(this).children('img').attr('src');
@@ -31,49 +81,6 @@
 			$('.post_empty_xxs').css({'display' : 'none'})
 			$('.rg-gallery').css({'display' : 'block'});
 		});
-		/*var gallery_wrap = $('.gallery-wrap');
-			pages = $('.pagination > span');
-			$('div #peg-1 .pagination').unbind('click');
-       	pages.on('click', function(e){
-       		alert(".[ea");
-        	//e.preventDefault();
-        	var number_of_page = $(this).contents().text()
-			if ($('.current-page').contents().text() < number_of_page) {
-  				gallery_wrap.stop().animate({left : -980}, 300, function() {
-  					var gallery_items = $('.gallery-item');
-  					i = 1;
-  					gallery_items.each(function() {
-  						if (this.css('display') == 'block') {
-  							this.css({'display' : 'none'});
-  						}
-  						else {
-  							if (i < number_of_page * images_on_page && i > number_of_page * (images_on_page - 1)) {
-  								this.css({'display' : 'block'});
-  							}
-  						}
-  						++i;
-  						console.log(i);
-  					});
-		        	gallery_wrap.stop().css({'left' : '980px'}).animate({left : 0}, 300);
-		    	});
-		    }
-		});
-/*				else {
-					$('.images').stop().animate({left: 980}, 300, function() {
-		        	content.load(link+' .content', function() {
-		        		var count_of_images = $('.ngg-gallery-thumbnail-box').size();
-						if ($('.ngg-navigation').size() == 1 && (count_of_images % 4 == 0 || count_of_images % 4 == 3)) {
-							$('.ngg-galleryoverview').append('<div class="post_empty post_empty_xxs"></div>');
-						}
-		        		$('.ngg-gallery-thumbnail-box').wrapAll('<div class="images"></div>');s
-		        		$('.images').stop().css({'left' : '-980px'}).animate({left : 0}, 300);
-		        	});
-		    	})
-			};
-    	});
-	content.on('click', '.ngg-gallery-thumbnail a', function(e){
-		e.preventDefault();
-*/
 	})(jQuery);
 </script>
 <?php get_footer(); ?>

@@ -6,21 +6,27 @@
 				<?php wp_nav_menu('menu=footer-menu'); ?><!--
 				--><div class="footer-menu__column">
 					<div class="footer-menu__letter">
-						<font class="footer-menu__header">Написать письмо</font>
+						<font class="footer-menu__header">
+							<?php $cur_lang = get_cur_lang();
+							get_lang_switch($cur_lang, "Написать письмо", "Write a letter", "Einen Brief schreiben"); ?>
+                    	</font>
 						<form class="letter-form" method="POST" action="">
 							<select class="letter-form__whom" size="1" name="whom">
 								<option value="director" selected>Директору</option>
 								<option value="manager">Менеджеру</option>
 							</select>
-							<input class="letter-form__email" name="email" type="email" placeholder="Ваш E-mail" required />
-							<textarea class="letter-form__message" name="message" placeholder="Ваше сообщение" required maxlength="1000"></textarea>
-							<input class="letter-form__submit" type="submit" value="Отправить" />
+							<input class="letter-form__email" name="email" type="email" placeholder="<?php get_lang_switch($cur_lang, 'Ваш E-mail', 'Your E-mail', 'Ihre E-mail'); ?>" required />
+							<textarea class="letter-form__message" name="message" placeholder="<?php get_lang_switch($cur_lang, 'Ваше сообщение', 'Your message', 'Ihre Nachricht'); ?>" required maxlength="1000"></textarea>
+							<input class="letter-form__submit" type="submit" value="<?php get_lang_switch($cur_lang, 'Отправить', 'Send', 'Senden'); ?>" />
 						</form>
 					</div>
 				</div>
 	        </div>
 	        <div class="footer-inform">
-	        	<div class="footer-inform__copyright">© 2013 Завод Триумф</div>
+	        	<div class="footer-inform__copyright">
+	        		© 2013
+	        		<?php get_lang_switch($cur_lang, "Завод Триумф", "Plant Triumph", "Pflanzen Triumph"); ?>
+                </div>
 	        	<div class="footer-inform__counter">
 	        		<!--LiveInternet counter-->
 	        		<script type="text/javascript">
@@ -34,7 +40,7 @@
 						"' alt='' title='LiveInternet: показано число посетителей за"+
 						" сегодня' "+
 						"border='0' width='88' height='15'><\/a>")
-						//-->
+						-->
 					</script>
 					<!--/LiveInternet-->
 	        	</div>
@@ -116,27 +122,27 @@
 			    	})
   				};
 	    	});
-	    	$('#menu-header-menu > #menu-item-234 > a').bind('click', function(e) {
+	    	$('#menu-header-menu > .menu-item:nth-child(3) > a').bind('click', function(e) {
 	    		e.preventDefault();
 	    	});
-	    	$('#menu-header-menu > #menu-item-238 > a').bind('click', function(e) {
+	    	$('#menu-header-menu > .menu-item:nth-child(4) > a').bind('click', function(e) {
 	    		e.preventDefault();
 	    	});
-	    	$('#menu-footer-menu > #menu-item-254 > a').bind('click', function(e) {
+	    	$('#menu-footer-menu > .menu-item:nth-child(2) > a').bind('click', function(e) {
 	    		e.preventDefault();
 	    	});
-	    	$('#menu-footer-menu > #menu-item-258 > a').bind('click', function(e) {
+	    	$('#menu-footer-menu > .menu-item:nth-child(4) > a').bind('click', function(e) {
 	    		e.preventDefault();
 	    	});
 	    	$(document).ready(function() {
-				if ($('#menu-header-menu > #menu-item-234 > .sub-menu > .menu-item.active').size()) {
-					$('#menu-header-menu > #menu-item-234').addClass('active');
-					$('#menu-header-menu > #menu-item-234 > .sub-menu').css({'display' : 'block'});
+				if ($('#menu-header-menu > .menu-item:nth-child(3) > .sub-menu > .menu-item.active').size()) {
+					$('#menu-header-menu > .menu-item:nth-child(3)').addClass('active');
+					$('#menu-header-menu > .menu-item:nth-child(3) > .sub-menu').css({'display' : 'block'});
 				}
-				if ($('#menu-header-menu > #menu-item-238 > .sub-menu > .menu-item.active').size()) {
-					$('#menu-header-menu > #menu-item-238').addClass('active');
-					$('#menu-header-menu > #menu-item-238 > .sub-menu').css({'display' : 'block'});
-					$('#menu-header-menu > #menu-item-234 > .sub-menu').css({'z-index' : '1'});
+				if ($('#menu-header-menu > .menu-item:nth-child(4) > .sub-menu > .menu-item.active').size()) {
+					$('#menu-header-menu > .menu-item:nth-child(4)').addClass('active');
+					$('#menu-header-menu > .menu-item:nth-child(4) > .sub-menu').css({'display' : 'block'});
+					$('#menu-header-menu > .menu-item:nth-child(3) > .sub-menu').css({'z-index' : '1'});
 				}
 			});
         })(jQuery);

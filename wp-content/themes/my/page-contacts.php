@@ -1,11 +1,22 @@
 <?php get_header(); ?>
 <section class="content content_contacts">
-	<img class="contacts" src="http://localhost:8000/wordpress/wp-content/uploads/2014/07/contacts.png" alt="Контакты" />
-	<?php get_modal_window(
+	<?php if (have_posts()): while (have_posts()): the_post(); 
+        the_content();
+    endwhile; endif;
+
+    // change address here 
+	if (($cur_lang = get_cur_lang()) == 'ru') {
+        $addr = "ООО «Завод Триумф», г. Челябинск, ул. Автодорожная, д. 3"; 
+    } elseif ($cur_lang == 'en') {
+        $addr = "«Plant Triumph»";
+    } else {
+        $addr = "«Pflanzen Triumph»";
+    } 
+	get_modal_window(
 		$phone_code = "351", 
 		$phones = "729-99-47,  729-99-48,  247-63-64,  777-20-72", 
 		$email = "opt@zavodtriumf.ru", 
-		$address = "ООО «Завод Триумф», г. Челябинск, ул. Автодорожная, д. 3",
+		$address = $addr,
 		$id = 'contacts', 
 		$is_closed = "false", 
 		$is_visible = "true",

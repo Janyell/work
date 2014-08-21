@@ -14,8 +14,8 @@ function use_parent_category_template() {
 	if (!is_category()) return;
 	$category = get_category($cat);
 	while ($category->cat_ID) {
-        if ( file_exists(TEMPLATEPATH . "/category-" . $category->cat_ID . '.php') ) {
-            include(TEMPLATEPATH . "/category-" . $category->cat_ID . '.php');
+        if ( file_exists(TEMPLATEPATH . "/category-" . $category->slug . '.php') ) {
+            include(TEMPLATEPATH . "/category-" . $category->slug . '.php');
             exit;
         }
 		$category = get_category($category->category_parent);

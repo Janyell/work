@@ -12,7 +12,6 @@
 <script type="text/javascript">
     (function($){
         $(document).ready(function() {
-            $('#source').appendTo('#destination');
             $(".gallery").after('<div class="gallery__full-image-wrapper"><div class="gallery__full-image"></div></div>');
             $('.gallery .gallery-item:first-child a').click();
         });

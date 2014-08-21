@@ -3,19 +3,20 @@
 	<img class="main-img" src="<?php bloginfo('template_url'); ?>/images/main-img.png" alt="Главная" />
 	<a class="main-menu__installation" href="#installation">
 		<img class="lower-corner-img" src="<?php bloginfo('template_url'); ?>/images/lower-corner.png" />
-		Монтаж
+		<?php $cur_lang = get_cur_lang();
+		get_lang_switch($cur_lang, 'Монтаж', 'Installation', 'Installation'); ?> 
 	</a>
 	<a class="main-menu__delivery" href="#delivery">
 		<img class="top-corner-img" src="<?php bloginfo('template_url'); ?>/images/top-corner.png" />
-		Доставка
+		<?php get_lang_switch($cur_lang, 'Доставка', 'Delivery', 'Versand'); ?>
 	</a>
-	<a class="main-menu__about-us" href="#about-us">
+	<a class="main-menu__about-us" href="#company">
 		<img class="lower-corner-img" src="<?php bloginfo('template_url'); ?>/images/lower-corner.png" />
-		О компании
+		<?php get_lang_switch($cur_lang, 'О компании', 'Company', 'Firma'); ?>
 	</a>
 	<a class="main-menu__repair" href="#repair">
 		<img class="lower-corner-img" src="<?php bloginfo('template_url'); ?>/images/lower-corner.png" />
-		Ремонт
+		<?php get_lang_switch($cur_lang, 'Ремонт', 'Repair', 'Reparatur'); ?>
 	</a>
 </section>
 <section class="main-content">
@@ -24,13 +25,13 @@
     <?php endwhile; endif; ?>
 </section>
 <section class="main-last-news">
-	<?php $posts = get_posts ("category=3&orderby=date&numberposts=1"); /* news */
+	<?php $posts = get_posts ("category_name=news&orderby=date&numberposts=1");
 	if ($posts) :
 	foreach ($posts as $post) : setup_postdata ($post); ?>
 		<div class="last-post_news">
 		<?php
 			$first_img = get_first_image();
-			if (!empty($first_img)) { ?>
+			if (has_post_thumbnail() || !empty($first_img)) { ?>
 				<div class="post__content last-post__content">
 			<?php } else { ?>
 				<div class="post__content_all">
@@ -41,46 +42,58 @@
 					</div>
 					<div class="post__date">
 						<?php the_time('j F Y');
-						echo " года"; ?>
+						get_lang_switch($cur_lang, ' года', '', ''); ?>
 					</div>
 				</div><!--
-				--><?php if (!empty($first_img)) { ?><!--
-				--><div class="post__img last-post__img">
-					<img class="post__first-img" src="<?php echo $first_img; ?>" alt="" />
-				</div>
+				--><?php if (has_post_thumbnail()) { ?><!--
+					--><div class="post__img last-post__img">
+						<?php the_post_thumbnail(); ?>
+					</div>
+				<?php } else {
+					if (!empty($first_img)) { ?><!--
+					--><div class="post__img last-post__img">
+						<img class="post__first-img" src="<?php echo $first_img; ?>" alt="" />
+					</div>
+				<?php } ?>
 			<?php } ?>
 			</div>
 	<?php endforeach; endif; ?>
 	<a class="more-news"href="<?php echo get_category_link(3); ?>">
-		больше новостей
+		<?php get_lang_switch($cur_lang, 'больше новостей', 'more news', 'mehr News'); ?>
 		<img class="more-img" src="<?php bloginfo('template_url'); ?>/images/more.png" />
 	</a>
 </section>
 <section class="main-last-production">
-	<?php $posts = get_posts ("category=4&orderby=date&numberposts=1");
+	<?php $posts = get_posts ("category_name=production&orderby=date&numberposts=1");
 	if ($posts) :
 	foreach ($posts as $post) : setup_postdata ($post); ?>
 		<a class="order" href="<?php the_permalink() ?>" title="Ссылка на: <?php the_title_attribute(); ?>">
 		<div class="last-post_production">
 
 		<?php
-			$first_img = get_first_image();
-			if (!empty($first_img)) { ?>
+			if (has_post_thumbnail()) { ?>
 				<div class="last-post_production__img">
-					<img class="last-post_production__first-img" src="<?php echo $first_img; ?>" alt="" />
+					<?php the_post_thumbnail('last-production-thumb'); ?>
 				</div>
-			<?php } ?>
-				<div class="last-post_production__content">
-					<h1 class="last-post_production__category-title">
-						<?php $category = get_the_category();
-						echo $category[0]->cat_name; ?>
-					</h1>
-					<p class="post_production__title last-post_production__title"><?php the_title(); ?></p>
-						<span class="order-button">заказать</span>
-						<img class="more-img" src="<?php bloginfo('template_url'); ?>/images/more.png" />
-				</div>
-			</div></a><!--
-			--><?php
+			<?php } else {
+				$first_img = get_first_image();
+				if (!empty($first_img)) { ?>
+					<div class="last-post_production__img">
+						<img class="last-post_production__first-img" src="<?php echo $first_img; ?>" alt="" />
+					</div>
+				<?php } ?>
+			<?php } ?>	
+			<div class="last-post_production__content">
+				<h1 class="last-post_production__category-title">
+					<?php $category = get_the_category();
+					echo $category[0]->cat_name; ?>
+				</h1>
+				<p class="post_production__title last-post_production__title"><?php the_title(); ?></p>
+					<span class="order-button"><?php get_lang_switch($cur_lang, 'заказать', 'order', 'bestellen'); ?></span>
+					<img class="more-img" src="<?php bloginfo('template_url'); ?>/images/more.png" />
+			</div>
+		</div></a><!--
+	--><?php
 	endforeach; endif; ?>
 </section>
 <script type="text/javascript">

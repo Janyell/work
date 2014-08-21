@@ -1,19 +1,23 @@
 <?php get_header(); ?>
 <section class="content content_representation">
+	<?php $cur_lang = get_cur_lang(); 
+	if (have_posts()): while (have_posts()): the_post();
+        the_content();
+    endwhile; endif; ?>
 	<div class="representation">
-		<img class="representation__chelyabinsk" src="<?php bloginfo('template_url'); ?>/images/representation_icon.png" alt="Челябинск" />
+		<img class="representation__chelyabinsk" src="<?php bloginfo('template_url'); ?>/images/representation_icon.png" alt="<?php get_lang_switch($cur_lang, 'Челябинск', 'Chelyabinsk', 'Chelyabinsk'); ?>" />
 		<img class="representation__moscow" src="<?php bloginfo('template_url'); ?>/images/representation_icon.png" alt="Москва" />
 		<img class="representation__nizhny-novgorod" src="<?php bloginfo('template_url'); ?>/images/representation_icon.png" alt="Нижний Новгород" />
 		<img class="representation__samara" src="<?php bloginfo('template_url'); ?>/images/representation_icon.png" alt="Самара" />
 		<img class="representation__ekaterinburg" src="<?php bloginfo('template_url'); ?>/images/representation_icon.png" alt="Екатеринбург" />
 		<img class="representation__omsk" src="<?php bloginfo('template_url'); ?>/images/representation_icon.png" alt="Омск" />
 	</div>
-	<?php
+		<?php
 	get_modal_window(
 		$phone_code = "351",
 		$phones = "729-99-47,  729-99-48,  247-63-64,  777-20-72",
 		$email = "opt@zavodtriumf.ru",
-		$address = "ООО «Завод Триумф», г. Челябинск, ул. Автодорожная, д. 3",
+		$address = lang_switch($cur_lang, 'ООО «Завод Триумф», г. Челябинск, ул. Автодорожная, д. 3', 'Chelyabinsk', 'Chelyabinsk'), // use lang_switch($cur_lang, ru, en, de)
 		$id = "chelyabinsk",
 		$is_closed = "false",
 		$is_visible = "false",
