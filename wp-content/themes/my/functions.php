@@ -96,12 +96,12 @@ function mlp_navigation(
 {
     $absolute_url = full_url($_SERVER);
     $texts = array('ru' => 'Русский', 'en' => 'English', 'de' => 'Deutsch');
-    $items = array ();
+    $items = array();
     if (!strstr($absolute_url, 'category') ) {
         $links = (array) mlp_get_interlinked_permalinks();
         if ( empty ( $links ) )
             return false;
-        $items = array ();
+        $items = array();
         foreach ( $links as $link ) {
             if ( isset ( $link['text'] ) ) {
                 $text = $link['text'];
@@ -165,7 +165,7 @@ function mlp_navigation(
         else {
             $items[] = sprintf(
                 '<a href="%1$s" hreflang="%2$s" rel="alternate">%3$s</a>',
-                str_replace_once('/de/', '/ru/', $absolute_url),
+                str_replace_once('/de/', '/blog/', $absolute_url),
                 'ru',
                 $texts['ru']
             );

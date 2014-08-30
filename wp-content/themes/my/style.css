@@ -149,9 +149,9 @@ textarea::-webkit-textarea-placeholder
 .letter-form__submit:hover, .wpcf7-submit:hover
 {
     background-color: #00955f;
-    -webkit-box-shadow: 1px 0 #00c67e, 1px 1px #007047, 2px 1px #00c67e, 2px 2px #007047, 3px 2px #00c67e, 3px 3px #007047, 4px 3px #00c67e, 4px 4px #007047;
-       -moz-box-shadow: 1px 0 #00c67e, 1px 1px #007047, 2px 1px #00c67e, 2px 2px #007047, 3px 2px #00c67e, 3px 3px #007047, 4px 3px #00c67e, 4px 4px #007047;
-            box-shadow: 1px 0 #00c67e, 1px 1px #007047, 2px 1px #00c67e, 2px 2px #007047, 3px 2px #00c67e, 3px 3px #007047, 4px 3px #00c67e, 4px 4px #007047;
+    -webkit-box-shadow: 1px 0 #00c67e, 1px 1px #007047, 2px 1px #00c67e, 2px 2px #007047, 3px 2px #00c67e, 3px 3px #007047;
+       -moz-box-shadow: 1px 0 #00c67e, 1px 1px #007047, 2px 1px #00c67e, 2px 2px #007047, 3px 2px #00c67e, 3px 3px #007047;
+            box-shadow: 1px 0 #00c67e, 1px 1px #007047, 2px 1px #00c67e, 2px 2px #007047, 3px 2px #00c67e, 3px 3px #007047;
 }
 .footer-inform
 {
@@ -889,34 +889,42 @@ a.post__title:hover
 
     height: 822px;
 }
-.main-menu > a
+.main-menu > a, #menu-home-menu > .menu-item
 {
     line-height: 27px;
 
-    position: absolute;
     z-index: 2;
 
+    position: absolute;
     padding: 0 10px;
 
-    color: #fff;
     background-color: #00955f; /* box-shadow */
     -webkit-box-shadow: 1px 0 #00c67e, 1px 1px #007047, 2px 1px #00c67e, 2px 2px #007047, 3px 2px #00c67e, 3px 3px #007047, 4px 3px #00c67e, 4px 4px #007047;
        -moz-box-shadow: 1px 0 #00c67e, 1px 1px #007047, 2px 1px #00c67e, 2px 2px #007047, 3px 2px #00c67e, 3px 3px #007047, 4px 3px #00c67e, 4px 4px #007047;
             box-shadow: 1px 0 #00c67e, 1px 1px #007047, 2px 1px #00c67e, 2px 2px #007047, 3px 2px #00c67e, 3px 3px #007047, 4px 3px #00c67e, 4px 4px #007047;
 }
-.main-menu__installation
+#menu-home-menu > .menu-item:hover {
+    background-color: #e2562f; /* box-shadow */
+    -webkit-box-shadow: 1px 0 #ffa48b, 1px 1px #ae301b, 2px 1px #ffa48b, 2px 2px #ae301b, 3px 2px #ffa48b, 3px 3px #ae301b, 4px 3px #ffa48b, 4px 4px #ae301b;
+       -moz-box-shadow: 1px 0 #ffa48b, 1px 1px #ae301b, 2px 1px #ffa48b, 2px 2px #ae301b, 3px 2px #ffa48b, 3px 3px #ae301b, 4px 3px #ffa48b, 4px 4px #ae301b;
+            box-shadow: 1px 0 #ffa48b, 1px 1px #ae301b, 2px 1px #ffa48b, 2px 2px #ae301b, 3px 2px #ffa48b, 3px 3px #ae301b, 4px 3px #ffa48b, 4px 4px #ae301b;
+}
+#menu-home-menu > .menu-item > a {
+    color: #fff;
+}
+.main-menu__installation, #menu-home-menu > .menu-item:first-child 
 {
     top: 203px;
     left: 152px;
 }
-.main-menu__about-us
-{
+.main-menu__about-us, #menu-home-menu > .menu-item:nth-child(2)
+{   
     z-index: 2;
     top: 278px;
     left: 789px;
 }
-.main-menu__repair
-{
+.main-menu__repair, #menu-home-menu > .menu-item:nth-child(3)
+{   
     top: -45px;
     left: 844px;
 }
@@ -932,8 +940,8 @@ a.post__title:hover
     top: -7px;
     left: 0;
 }
-.main-menu__delivery
-{
+.main-menu__delivery, #menu-home-menu > .menu-item:nth-child(4)
+{   
     top: 399px;
     left: 376px;
 }

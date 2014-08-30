@@ -1,23 +1,7 @@
 <?php get_header(); ?>
 <section class="main-menu">
 	<img class="main-img" src="<?php bloginfo('template_url'); ?>/images/main-img.png" alt="Главная" />
-	<a class="main-menu__installation" href="#installation">
-		<img class="lower-corner-img" src="<?php bloginfo('template_url'); ?>/images/lower-corner.png" />
-		<?php $cur_lang = get_cur_lang();
-		get_lang_switch($cur_lang, 'Монтаж', 'Installation', 'Installation'); ?> 
-	</a>
-	<a class="main-menu__delivery" href="#delivery">
-		<img class="top-corner-img" src="<?php bloginfo('template_url'); ?>/images/top-corner.png" />
-		<?php get_lang_switch($cur_lang, 'Доставка', 'Delivery', 'Versand'); ?>
-	</a>
-	<a class="main-menu__about-us" href="#company">
-		<img class="lower-corner-img" src="<?php bloginfo('template_url'); ?>/images/lower-corner.png" />
-		<?php get_lang_switch($cur_lang, 'О компании', 'Company', 'Firma'); ?>
-	</a>
-	<a class="main-menu__repair" href="#repair">
-		<img class="lower-corner-img" src="<?php bloginfo('template_url'); ?>/images/lower-corner.png" />
-		<?php get_lang_switch($cur_lang, 'Ремонт', 'Repair', 'Reparatur'); ?>
-	</a>
+	<?php wp_nav_menu('menu=home-menu'); ?>
 </section>
 <section class="main-content">
 	<?php if (have_posts()): while (have_posts()): the_post(); ?>
@@ -100,6 +84,18 @@
 	(function($){
 		$(document).ready(function() {
 			$('.wrapper').css({'overflow' : 'visible'});
+			$('#menu-home-menu > .menu-item:first-child > a').before('<img class="lower-corner-img" src="<?php bloginfo('template_url'); ?>/images/lower-corner.png" />');
+			$('#menu-home-menu > .menu-item:nth-child(3) > a').before('<img class="lower-corner-img" src="<?php bloginfo('template_url'); ?>/images/lower-corner.png" />');
+			$('#menu-home-menu > .menu-item:nth-child(4) > a').before('<img class="lower-corner-img" src="<?php bloginfo('template_url'); ?>/images/lower-corner.png" />');
+			$('#menu-home-menu > .menu-item:nth-child(2) > a').before('<img class="top-corner-img" src="<?php bloginfo('template_url'); ?>/images/top-corner.png" />');
+			$('#menu-home-menu > .menu-item').bind('mouseover', function() {
+				$(this).find(".lower-corner-img").attr("src","<?php bloginfo('template_url'); ?>/images/lower-corner-hover.png");
+				$(this).find(".top-corner-img").attr("src","<?php bloginfo('template_url'); ?>/images/top-corner-hover.png");
+			});
+			$('#menu-home-menu > .menu-item').bind('mouseout', function() {
+				$(this).find(".lower-corner-img").attr("src","<?php bloginfo('template_url'); ?>/images/lower-corner.png");
+				$(this).find(".top-corner-img").attr("src","<?php bloginfo('template_url'); ?>/images/top-corner.png");
+			});
 		});
 	})(jQuery);
 </script>
