@@ -43,7 +43,8 @@
 			</div>
 	<?php endforeach; endif; ?>
 	<a class="more-news"href="<?php echo get_category_link(3); ?>">
-		<?php get_lang_switch($cur_lang, 'больше новостей', 'more news', 'mehr News'); ?>
+		<?php $cur_lang = get_cur_lang(); 
+		get_lang_switch($cur_lang, 'больше новостей', 'more news', 'mehr News'); ?>
 		<img class="more-img" src="<?php bloginfo('template_url'); ?>/images/more.png" />
 	</a>
 </section>
